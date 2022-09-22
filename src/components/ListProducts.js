@@ -2,7 +2,8 @@ import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { Spinner } from 'react-bootstrap'
+
+import { Test } from './Test'
 
 const ListProducts = () => {
     const [prodts, setprodts] = useState([])
@@ -27,12 +28,13 @@ const ListProducts = () => {
     getProds ()
     }, [])
     if (loding) {
-       return <Spinner animation="border" variant="success" />
+       return 'loading.........'
     }
   return (
-    <div> <h1>List Products</h1>
+    <div style={{display:"flex", justifyContent:"space-around" ,flexWrap:"wrap"}}
+    > 
     
-        {prodts.map(
+        {/* {prodts.map(
             el=><div key={el.id}>
                 <h2>{el.title}</h2>
                 <p>{el.price} </p>
@@ -41,7 +43,13 @@ const ListProducts = () => {
                 </p>
                 <img src={el.image} alt="" />
             </div>
-        )}
+        )} */}
+
+        {
+            prodts.map(
+             el=>   <Test key={el.id} el={el}/>
+            )
+        }
 
 
     </div>
